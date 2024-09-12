@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Seleciona todos os botões que possuem o atributo 'data-tab-button'
     const buttons = document.querySelectorAll('[data-tab-button]');
+    const questions = document.querySelectorAll('[data-faq-question]');
     
     // Adiciona um listener de clique para cada botão
     for (let i = 0; i < buttons.length; i++) {
@@ -36,6 +37,19 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 0; i < tabsContainer.length; i++) {
             tabsContainer[i].classList.remove('shows__list--is-active');
         }
+    }
+
+    for(let i = 0; i < questions.length;  i++){
+        questions [i].addEventListener('click', abreOufechaResposta)
+    }
+
+    function abreOufechaResposta(elemento){
+        const classe = 'faq__questions__item--is-open';
+        const elementoPai = elemento.target.parentNode;
+
+        elementoPai.classList.toggle(classe)
+
+
     }
 
 });

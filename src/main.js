@@ -2,8 +2,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // Seleciona todos os botões que possuem o atributo 'data-tab-button'
     const buttons = document.querySelectorAll('[data-tab-button]');
     const questions = document.querySelectorAll('[data-faq-question]');
+
+    const heroSection = document.querySelector('.hero');
+    const alturaHero = heroSection.clientHeight;
+
+    window.addEventListener('scroll', function(){
+        const posicaoAtual = window.scrollY;
+
+        if (posicaoAtual < alturaHero){
+            ocultaElementosDoHeader()
+        } else {
+            exibeElemntosDoHeader()
+        }
+    })
+
+
     
-    // Adiciona um listener de clique para cada botão
+
+    // Adiciona um listener de clique para cada botão seção atração
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function(botao) {
             // Obtém o valor do atributo 'data-tab-button' do botão clicado
@@ -52,4 +68,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
 
+
+    function ocultaElementosDoHeader(){
+        const header = document.querySelector('header');
+        header.classList.add('header--is-hidden');
+
+    }
+
+    function exibeElemntosDoHeader(){
+        const header =document.querySelector('header');
+        header.classList.remove('header--is-hidden');
+    }
 });
